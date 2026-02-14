@@ -1,4 +1,8 @@
 # Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 backend/venv/
 backend/.venv-dev/
 backend/.venv312/
