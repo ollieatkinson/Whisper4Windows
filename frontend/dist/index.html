@@ -463,6 +463,42 @@
             cursor: not-allowed;
         }
 
+        .wav-transcribe-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .wav-file-name {
+            font-size: 12px;
+            color: var(--text-secondary);
+            max-width: 260px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .wav-transcription-output {
+            width: 100%;
+            min-height: 96px;
+            margin-top: 10px;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 13px;
+            resize: vertical;
+        }
+
+        .wav-transcription-meta {
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
         /* Toggle Switch */
         .toggle-switch {
             position: relative;
@@ -598,6 +634,318 @@
             border-color: #667eea;
         }
 
+        /* Model Library */
+        .model-library-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .model-active-banner {
+            border: 1px solid var(--border-color);
+            background: var(--bg-main);
+            border-radius: 12px;
+            padding: 10px 12px;
+            min-width: 280px;
+            max-width: 480px;
+        }
+
+        .model-active-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .model-active-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .model-active-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .model-family-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .model-library-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .model-controls-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .model-controls-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .model-hardware-summary {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            border: 1px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 8px 10px;
+            background: var(--bg-card);
+        }
+
+        .model-filter-btn {
+            padding: 7px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            font-size: 12px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .model-filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .model-filter-btn.active {
+            background: #667eea;
+            color: #fff;
+            border-color: #667eea;
+        }
+
+        .model-library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 14px;
+        }
+
+        .model-tile {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-main);
+            padding: 14px;
+        }
+
+        .model-tile-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .model-logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            flex-shrink: 0;
+        }
+
+        .model-meta {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .model-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .model-subline {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .model-repo-caption {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: -2px;
+            margin-bottom: 8px;
+        }
+
+        .model-repo-caption a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .model-repo-caption a:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+
+        .model-pill {
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            font-size: 11px;
+            padding: 3px 8px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        .model-pill.model-coming-soon {
+            border-color: #f0ad4e;
+            color: #f0ad4e;
+        }
+
+        .model-pill.model-status-great {
+            border-color: #28a745;
+            color: #28a745;
+        }
+
+        .model-pill.model-status-caution {
+            border-color: #f0ad4e;
+            color: #f0ad4e;
+        }
+
+        .model-pill.model-status-limited {
+            border-color: #d9534f;
+            color: #d9534f;
+        }
+
+        .model-scores {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .model-score-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .model-score-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            min-width: 110px;
+        }
+
+        .model-score-track {
+            flex: 1;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--border-color);
+            overflow: hidden;
+        }
+
+        .model-score-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 999px;
+        }
+
+        .model-score-fill.quality {
+            background: #2fa572;
+        }
+
+        .model-score-fill.performance {
+            background: #2d9cdb;
+        }
+
+        .model-status-line {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+
+        .model-path {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            margin-bottom: 10px;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+        }
+
+        .model-path code {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1px 5px;
+        }
+
+        .model-progress {
+            width: 100%;
+            height: 6px;
+            border-radius: 4px;
+            background: var(--border-color);
+            overflow: hidden;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .model-progress.show {
+            display: block;
+        }
+
+        .model-progress > div {
+            height: 100%;
+            width: 0%;
+            background: #667eea;
+            transition: width 0.25s ease;
+        }
+
+        .model-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn.btn-danger {
+            border-color: #d9534f;
+            color: #d9534f;
+        }
+
+        .btn.btn-danger:hover {
+            background: #d9534f;
+            color: #fff;
+            border-color: #d9534f;
+        }
+
+        .btn.btn-primary {
+            border-color: #667eea;
+            background: #667eea;
+            color: #fff;
+        }
+
+        .model-empty-state {
+            border: 1px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-align: center;
+        }
+
         /* Volume Slider */
         .volume-slider {
             width: 100%;
@@ -701,11 +1049,11 @@
             <h1 class="section-title">Get started</h1>
 
             <div class="cards-grid">
-                <div class="card" onclick="navigateToPage('configuration')">
+                <div class="card" onclick="toggleRecordingManual()">
                     <span class="card-icon">⏺</span>
                     <div class="card-content">
                         <div class="card-title">Start recording</div>
-                        <div class="card-description">Turn your voice to text with a single click.</div>
+                        <div class="card-description">Turn your voice to text with a single click (same as toggle shortcut).</div>
                     </div>
                     <div class="card-badge" id="home-shortcut-badge">Ctrl+\</div>
                 </div>
@@ -819,30 +1167,39 @@
 
                 <div class="config-row">
                     <div class="config-row-left">
-                        <div class="config-row-title">Model Quality</div>
-                        <div class="config-row-description">Transcription accuracy vs speed</div>
+                        <div class="config-row-title">Manual Transcriber Launch</div>
+                        <div class="config-row-description">Start or stop transcription manually (same behavior as the global toggle shortcut).</div>
                     </div>
                     <div class="config-row-right">
-                        <div class="custom-dropdown" id="modelDropdown">
-                            <div class="dropdown-header" onclick="toggleModelDropdown()">
-                                <span id="selectedModel">Small (Recommended)</span>
-                            </div>
-                            <div class="dropdown-content" id="modelDropdownContent">
-                                <div id="modelOptions"></div>
-                            </div>
+                        <button class="btn btn-primary" id="manualTranscriberBtn" onclick="toggleRecordingManual()">Launch Transcriber</button>
+                    </div>
+                </div>
+
+                <div class="config-row">
+                    <div class="config-row-left">
+                        <div class="config-row-title">Transcribe WAV File</div>
+                        <div class="config-row-description">Choose a local .wav file and transcribe it with the selected model and device.</div>
+                        <div class="wav-transcribe-controls">
+                            <input type="file" id="wavFileInput" accept=".wav,audio/wav" style="display: none;" onchange="onWavFileSelected(event)">
+                            <button class="btn" onclick="chooseWavFile()">Choose WAV</button>
+                            <button class="btn btn-primary" id="transcribeWavBtn" onclick="transcribeSelectedWav()" disabled>Transcribe File</button>
+                            <span class="wav-file-name" id="wavFileName">No file selected</span>
                         </div>
+                        <textarea id="wavTranscriptionOutput" class="wav-transcription-output" readonly placeholder="Transcribed text will appear here."></textarea>
+                        <div class="wav-transcription-meta" id="wavTranscriptionMeta"></div>
                     </div>
                 </div>
 
                 <div class="config-row">
                     <div class="config-row-left">
                         <div class="config-row-title">Processing Device</div>
-                        <div class="config-row-description">CPU or GPU acceleration</div>
+                        <div class="config-row-description">Auto, CUDA, DirectML, or CPU</div>
                     </div>
                     <div class="config-row-right">
                         <div class="device-buttons">
                             <button class="device-btn active" id="deviceAuto" onclick="selectDevice('auto')">Auto</button>
-                            <button class="device-btn" id="deviceGPU" onclick="selectDevice('cuda')">GPU</button>
+                            <button class="device-btn" id="deviceGPU" onclick="selectDevice('cuda')">CUDA</button>
+                            <button class="device-btn" id="deviceDML" onclick="selectDevice('directml')">DirectML</button>
                             <button class="device-btn" id="deviceCPU" onclick="selectDevice('cpu')">CPU</button>
                         </div>
                     </div>
@@ -851,10 +1208,10 @@
                 <div class="config-row">
                     <div class="config-row-left">
                         <div class="config-row-title">GPU Acceleration Libraries</div>
-                        <div class="config-row-description">Download CUDA libraries for GPU support</div>
+                        <div class="config-row-description">NVIDIA CUDA only. AMD/Intel use DirectML without extra downloads.</div>
                     </div>
                     <div class="config-row-right">
-                        <button class="btn" onclick="manualGPUSetup()">Install GPU Libraries...</button>
+                        <button class="btn" id="gpuInstallActionBtn" onclick="manualGPUSetup()">Install Missing NVIDIA CUDA Libraries...</button>
                     </div>
                 </div>
 
@@ -886,6 +1243,53 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Model Library Section -->
+            <div class="config-section" id="section-model-library">
+                <h3 class="config-section-title">Model Library</h3>
+
+                <div class="config-row">
+                    <div class="config-row-left">
+                        <div class="config-row-title">Catalog Source</div>
+                        <div class="config-row-description" id="modelCatalogSource">Bundled catalog</div>
+                    </div>
+                    <div class="config-row-right">
+                        <button class="btn" onclick="refreshModelLibrary()">Refresh</button>
+                    </div>
+                </div>
+
+                <div style="padding-top: 16px;">
+                    <div class="model-library-toolbar">
+                        <div class="model-active-banner">
+                            <div class="model-active-title">Active model</div>
+                            <div class="model-active-name" id="activeModelLibraryLabel">Whisper Small</div>
+                            <div class="model-active-meta" id="activeModelLibraryMeta">Whisper · faster-whisper</div>
+                        </div>
+                        <div class="model-family-filters">
+                            <button id="modelFilterAll" class="model-filter-btn active" onclick="setModelFamilyFilter('all')">All</button>
+                            <button id="modelFilterWhisper" class="model-filter-btn" onclick="setModelFamilyFilter('whisper')">Whisper</button>
+                            <button id="modelFilterNvidia" class="model-filter-btn" onclick="setModelFamilyFilter('nvidia')">NVIDIA</button>
+                        </div>
+                    </div>
+                    <div class="model-library-controls">
+                        <div class="model-controls-group">
+                            <span class="model-controls-label">Rank by</span>
+                            <button id="modelRankBalanced" class="model-filter-btn active" onclick="setModelRankingPreference('balanced')">Balanced</button>
+                            <button id="modelRankSpeed" class="model-filter-btn" onclick="setModelRankingPreference('speed')">Performance</button>
+                            <button id="modelRankQuality" class="model-filter-btn" onclick="setModelRankingPreference('quality')">Quality</button>
+                        </div>
+                        <div class="model-controls-group">
+                            <span class="model-controls-label">Hardware fit</span>
+                            <button id="modelPerfFilterAll" class="model-filter-btn active" onclick="setModelPerformanceFilter('all')">All</button>
+                            <button id="modelPerfFilterRunnable" class="model-filter-btn" onclick="setModelPerformanceFilter('runnable')">Likely Fast</button>
+                            <button id="modelPerfFilterCaution" class="model-filter-btn" onclick="setModelPerformanceFilter('caution')">Caution</button>
+                            <button id="modelPerfFilterLimited" class="model-filter-btn" onclick="setModelPerformanceFilter('limited')">Too Slow/Large</button>
+                        </div>
+                    </div>
+                    <div class="model-hardware-summary" id="modelHardwareSummary">Estimating model performance for this hardware...</div>
+                    <div id="modelLibraryGrid" class="model-library-grid"></div>
                 </div>
             </div>
 
@@ -1024,14 +1428,14 @@
     <!-- GPU Setup Modal -->
     <div id="gpuSetupModal" class="modal-overlay hidden">
         <div class="modal" style="max-width: 500px;">
-            <h3>🚀 GPU Detected!</h3>
-            <p>Your system has an NVIDIA GPU. Download GPU acceleration libraries (~600MB) for 5-10x faster transcription?</p>
+            <h3 id="gpuSetupTitle">🚀 NVIDIA GPU Detected!</h3>
+            <p id="gpuSetupMessage">Download NVIDIA CUDA libraries (on-demand) for faster transcription on CUDA?</p>
             <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px;">
                 <strong>With GPU:</strong> 5s audio → 0.5-2s transcription<br>
                 <strong>Without GPU:</strong> 5s audio → 5-15s transcription
             </p>
             <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px;">
-                You can always install this later from Configuration → Processing Device.
+                AMD and Intel GPUs should use DirectML instead (no CUDA download required).
             </p>
             <div id="gpuDownloadProgress" class="hidden" style="margin: 20px 0;">
                 <div style="background: var(--border-color); height: 8px; border-radius: 4px; overflow: hidden;">
@@ -1041,7 +1445,7 @@
             </div>
             <div class="modal-buttons" id="gpuModalButtons">
                 <button class="btn" onclick="skipGPUSetup()">Skip</button>
-                <button class="btn" onclick="startGPUDownload()" style="background: #667eea; color: white; border-color: #667eea;">Download (~600MB)</button>
+                <button class="btn" id="gpuDownloadActionBtn" onclick="startGPUDownload()" style="background: #667eea; color: white; border-color: #667eea;">Download Missing CUDA Libraries</button>
             </div>
         </div>
     </div>
@@ -1055,6 +1459,20 @@
         let soundEffectsEnabled = true;
         let volume = 80;
         let preferredLanguages = [];
+        let modelCatalog = [];
+        let modelSpecsById = {};
+        let modelStatusById = {};
+        let modelPerformanceById = {};
+        let modelHardwareProfile = null;
+        let modelDownloadPoller = null;
+        let modelLibraryRefreshing = false;
+        let modelCatalogSourceLabel = 'Bundled catalog';
+        let modelFamilyFilter = 'all';
+        let modelPerformanceFilter = 'all';
+        let modelRankingPreference = 'balanced';
+        let selectedWavFile = null;
+        let transcribeWavInProgress = false;
+        let manualToggleInProgress = false;
 
         // Sound Effects using Web Audio API
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1234,9 +1652,19 @@
                 const data = await response.json();
 
                 const statusEl = document.getElementById('backendStatus');
-                statusEl.innerHTML = `<span>✅</span><span>${data.backend.toUpperCase()} Ready (${data.model})</span>`;
+                const hasLoadedModel = Boolean(data.model_id);
+                const runtimeLabel = hasLoadedModel ? (data.runtime || data.backend || 'backend') : 'backend';
+                const modelLabel = hasLoadedModel ? (data.model_id || data.model || 'not_loaded') : 'not loaded';
+                const fallbackSuffix = data.fallback_reason ? ` - ${data.fallback_reason}` : '';
+                statusEl.innerHTML = `<span>✅</span><span>${runtimeLabel} Ready (${modelLabel})${fallbackSuffix}</span>`;
                 statusEl.classList.remove('offline', 'starting', 'checking');
+                const transitionedOnline = lastBackendStatus !== 'online';
                 lastBackendStatus = 'online';
+                if (transitionedOnline) {
+                    refreshModelLibrary(false).catch((refreshError) => {
+                        console.warn('⚠️ Model library refresh on backend reconnect failed:', refreshError);
+                    });
+                }
             } catch (error) {
                 const statusEl = document.getElementById('backendStatus');
                 if (lastBackendStatus !== 'offline') {
@@ -1279,6 +1707,138 @@
             }
         }
 
+        async function toggleRecordingManual() {
+            if (manualToggleInProgress) return;
+
+            const button = document.getElementById('manualTranscriberBtn');
+            const originalLabel = button ? button.textContent : 'Launch Transcriber';
+            manualToggleInProgress = true;
+            if (button) {
+                button.disabled = true;
+                button.textContent = 'Working...';
+            }
+
+            try {
+                const { invoke } = window.__TAURI_INTERNALS__;
+                await invoke('cmd_toggle_recording');
+            } catch (error) {
+                console.error('❌ Manual transcriber toggle failed:', error);
+                alert('Failed to launch transcriber');
+            } finally {
+                manualToggleInProgress = false;
+                if (button) {
+                    button.disabled = false;
+                    button.textContent = originalLabel;
+                }
+            }
+        }
+
+        function chooseWavFile() {
+            const input = document.getElementById('wavFileInput');
+            if (input) input.click();
+        }
+
+        function updateWavTranscribeUiState() {
+            const transcribeBtn = document.getElementById('transcribeWavBtn');
+            if (!transcribeBtn) return;
+
+            transcribeBtn.disabled = !selectedWavFile || transcribeWavInProgress;
+            transcribeBtn.textContent = transcribeWavInProgress ? 'Transcribing...' : 'Transcribe File';
+        }
+
+        function onWavFileSelected(event) {
+            const input = event?.target;
+            const nameLabel = document.getElementById('wavFileName');
+            const output = document.getElementById('wavTranscriptionOutput');
+            const meta = document.getElementById('wavTranscriptionMeta');
+            const file = input?.files?.[0] || null;
+
+            selectedWavFile = null;
+            if (file) {
+                const lower = String(file.name || '').toLowerCase();
+                if (lower.endsWith('.wav')) {
+                    selectedWavFile = file;
+                } else {
+                    alert('Please choose a .wav file');
+                    if (input) input.value = '';
+                }
+            }
+
+            if (nameLabel) {
+                nameLabel.textContent = selectedWavFile ? selectedWavFile.name : 'No file selected';
+            }
+            if (output) {
+                output.value = '';
+            }
+            if (meta) {
+                meta.textContent = '';
+            }
+
+            updateWavTranscribeUiState();
+        }
+
+        async function transcribeSelectedWav() {
+            if (!selectedWavFile || transcribeWavInProgress) {
+                return;
+            }
+
+            const output = document.getElementById('wavTranscriptionOutput');
+            const meta = document.getElementById('wavTranscriptionMeta');
+            const modelId = getModelIdFromValue(selectedModelValue);
+            const activeDevice = selectedDevice || 'auto';
+            const activeLanguage = selectedLanguageCode || 'auto';
+
+            transcribeWavInProgress = true;
+            updateWavTranscribeUiState();
+            if (meta) {
+                meta.textContent = 'Uploading and transcribing...';
+            }
+
+            try {
+                const formData = new FormData();
+                formData.append('file', selectedWavFile, selectedWavFile.name);
+                formData.append('model_id', modelId);
+                formData.append('device', activeDevice);
+                formData.append('language', activeLanguage);
+                formData.append('task', 'transcribe');
+
+                const response = await fetch(`${BACKEND_URL}/transcribe/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const payload = await response.json();
+                if (payload.status !== 'success') {
+                    throw new Error(payload.message || 'Transcription failed');
+                }
+
+                if (output) {
+                    output.value = String(payload.text || '');
+                }
+                if (meta) {
+                    const elapsed = Number(payload.transcription_time || 0).toFixed(2);
+                    const runtime = String(payload.runtime || 'unknown');
+                    meta.textContent = `${payload.model_id || modelId} · ${activeDevice} · ${runtime} · ${elapsed}s`;
+                }
+            } catch (error) {
+                console.error('❌ WAV transcription failed:', error);
+                if (output) {
+                    output.value = '';
+                }
+                if (meta) {
+                    meta.textContent = `Error: ${String(error)}`;
+                }
+                alert('WAV transcription failed');
+            } finally {
+                transcribeWavInProgress = false;
+                updateWavTranscribeUiState();
+            }
+        }
+
         // Start periodic backend health checks
         function startBackendHealthPolling() {
             // Check immediately
@@ -1306,13 +1866,19 @@
             const buttons = {
                 'auto': document.getElementById('deviceAuto'),
                 'cuda': document.getElementById('deviceGPU'),
+                'directml': document.getElementById('deviceDML'),
                 'cpu': document.getElementById('deviceCPU')
             };
 
-            Object.values(buttons).forEach(btn => btn.classList.remove('active'));
-            buttons[device].classList.add('active');
+            Object.values(buttons).forEach(btn => {
+                if (btn) btn.classList.remove('active');
+            });
+            if (buttons[device]) {
+                buttons[device].classList.add('active');
+            }
 
             saveSettings();
+            refreshModelLibrary(false);
         }
 
         // Toggle Functions
@@ -1579,81 +2145,869 @@
             }
         }
 
-        // Model dropdown data
-        const MODELS = [
-            { value: 'tiny', name: 'Tiny (Fastest)' },
-            { value: 'base', name: 'Base' },
-            { value: 'small', name: 'Small (Recommended)' },
-            { value: 'medium', name: 'Medium' },
-            { value: 'large-v3', name: 'Large V3' },
-            { value: 'large-v3-turbo', name: 'Large V3 Turbo (Best)' }
+        // Model catalog + dropdown
+        const FALLBACK_MODELS = [
+            { model_id: 'whisper-tiny', value: 'tiny', name: 'Whisper Tiny (Fastest)', family: 'whisper', runtime: 'faster_whisper' },
+            { model_id: 'whisper-base', value: 'base', name: 'Whisper Base', family: 'whisper', runtime: 'faster_whisper' },
+            { model_id: 'whisper-small', value: 'small', name: 'Whisper Small (Recommended)', family: 'whisper', runtime: 'faster_whisper' },
+            { model_id: 'whisper-medium', value: 'medium', name: 'Whisper Medium', family: 'whisper', runtime: 'faster_whisper' },
+            { model_id: 'whisper-large-v3', value: 'large-v3', name: 'Whisper Large V3', family: 'whisper', runtime: 'faster_whisper' },
+            { model_id: 'whisper-large-v3-turbo', value: 'large-v3-turbo', name: 'Whisper Large V3 Turbo', family: 'whisper', runtime: 'faster_whisper' },
+            { model_id: 'parakeet-ctc-0.6b', value: 'parakeet-ctc-0.6b', name: 'Parakeet CTC 0.6B', family: 'parakeet', runtime: 'parakeet_transformers' },
+            { model_id: 'parakeet-ctc-1.1b', value: 'parakeet-ctc-1.1b', name: 'Parakeet CTC 1.1B', family: 'parakeet', runtime: 'parakeet_transformers' }
         ];
-
+        let MODELS = [...FALLBACK_MODELS];
+        let modelValueToId = {};
+        let modelIdToValue = {};
         let selectedModelValue = 'small';
+
+        function rebuildModelLookupMaps() {
+            modelValueToId = {};
+            modelIdToValue = {};
+            MODELS.forEach(model => {
+                modelValueToId[model.value] = model.model_id;
+                modelIdToValue[model.model_id] = model.value;
+            });
+        }
+
+        function getModelIdFromValue(modelValue) {
+            return modelValueToId[modelValue] || modelValue;
+        }
+
+        function getModelValueFromModelId(modelId) {
+            return modelIdToValue[modelId] || modelId;
+        }
+
+        function getModelByValue(modelValue) {
+            return MODELS.find(model => model.value === modelValue);
+        }
+
+        function getModelById(modelId) {
+            const value = getModelValueFromModelId(modelId);
+            return getModelByValue(value);
+        }
+
+        async function loadBundledModelCatalog() {
+            try {
+                const response = await fetch('assets/model-catalog.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const payload = await response.json();
+                if (!payload || !Array.isArray(payload.models)) {
+                    throw new Error('Invalid model catalog format');
+                }
+                modelCatalogSourceLabel = 'Bundled catalog (assets/model-catalog.json)';
+                return payload.models;
+            } catch (error) {
+                console.warn('⚠️ Failed to load bundled model catalog:', error);
+                modelCatalogSourceLabel = 'Bundled catalog unavailable, using backend/default models';
+                return [];
+            }
+        }
+
+        async function loadBackendModels() {
+            try {
+                const response = await fetch(`${BACKEND_URL}/models`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const data = await response.json();
+                if (!data.success || !Array.isArray(data.models)) {
+                    throw new Error('Unexpected /models response');
+                }
+
+                const byId = {};
+                data.models.forEach(spec => {
+                    if (spec && spec.model_id) {
+                        byId[spec.model_id] = spec;
+                    }
+                });
+                modelSpecsById = byId;
+                return data.models;
+            } catch (error) {
+                console.warn('⚠️ Failed to load backend model list:', error);
+                modelSpecsById = {};
+                return [];
+            }
+        }
+
+        function getCatalogEntryByModelId(modelId) {
+            return modelCatalog.find(entry => entry.model_id === modelId) || null;
+        }
+
+        function isCatalogPreview(entry) {
+            return String(entry?.availability || '').toLowerCase() === 'preview';
+        }
+
+        function modelVendorGroup(cat = {}, spec = {}) {
+            const explicitVendor = String(cat.vendor || spec.vendor || '').toLowerCase();
+            if (explicitVendor === 'whisper' || explicitVendor === 'nvidia') {
+                return explicitVendor;
+            }
+
+            const family = String(cat.family || spec.family || '').toLowerCase();
+            if (family === 'whisper') {
+                return 'whisper';
+            }
+            if (family === 'parakeet') {
+                return 'nvidia';
+            }
+
+            const runtime = String(cat.runtime || spec.runtime || '').toLowerCase();
+            if (runtime.includes('nemo')) {
+                return 'nvidia';
+            }
+
+            return 'other';
+        }
+
+        function modelRepoUrl(cat = {}, spec = {}) {
+            const explicit = String(cat.download_repo || '').trim();
+            if (explicit) return explicit;
+
+            const repoId = String(spec?.download?.repo_id || '').trim();
+            if (!repoId) return '';
+            return `https://huggingface.co/${repoId}`;
+        }
+
+        function updateModelFilterButtons() {
+            const filterButtons = {
+                all: document.getElementById('modelFilterAll'),
+                whisper: document.getElementById('modelFilterWhisper'),
+                nvidia: document.getElementById('modelFilterNvidia')
+            };
+            Object.entries(filterButtons).forEach(([key, button]) => {
+                if (!button) return;
+                if (modelFamilyFilter === key) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        function setModelFamilyFilter(filter) {
+            const normalized = ['all', 'whisper', 'nvidia'].includes(filter) ? filter : 'all';
+            modelFamilyFilter = normalized;
+            updateModelFilterButtons();
+            renderModelLibrary();
+        }
+
+        function updateModelPerformanceFilterButtons() {
+            const filterButtons = {
+                all: document.getElementById('modelPerfFilterAll'),
+                runnable: document.getElementById('modelPerfFilterRunnable'),
+                caution: document.getElementById('modelPerfFilterCaution'),
+                limited: document.getElementById('modelPerfFilterLimited')
+            };
+            Object.entries(filterButtons).forEach(([key, button]) => {
+                if (!button) return;
+                if (modelPerformanceFilter === key) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        function setModelPerformanceFilter(filter) {
+            const normalized = ['all', 'runnable', 'caution', 'limited'].includes(filter) ? filter : 'all';
+            modelPerformanceFilter = normalized;
+            updateModelPerformanceFilterButtons();
+            renderModelLibrary();
+        }
+
+        function updateModelRankingButtons() {
+            const rankingButtons = {
+                balanced: document.getElementById('modelRankBalanced'),
+                speed: document.getElementById('modelRankSpeed'),
+                quality: document.getElementById('modelRankQuality')
+            };
+            Object.entries(rankingButtons).forEach(([key, button]) => {
+                if (!button) return;
+                if (modelRankingPreference === key) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        function setModelRankingPreference(preference) {
+            const normalized = ['balanced', 'speed', 'quality'].includes(preference) ? preference : 'balanced';
+            modelRankingPreference = normalized;
+            updateModelRankingButtons();
+            renderModelLibrary();
+        }
+
+        function performanceStateBucket(status) {
+            const normalized = String(status || '').toLowerCase();
+            if (normalized === 'great' || normalized === 'runnable') {
+                return 'runnable';
+            }
+            if (normalized === 'caution') {
+                return 'caution';
+            }
+            if (normalized === 'too_slow' || normalized === 'too_large' || normalized === 'unsupported') {
+                return 'limited';
+            }
+            return 'all';
+        }
+
+        function matchesPerformanceFilter(perf) {
+            if (modelPerformanceFilter === 'all') return true;
+            if (!perf) return modelPerformanceFilter === 'limited';
+            const bucket = performanceStateBucket(perf.status);
+            return bucket === modelPerformanceFilter;
+        }
+
+        function modelStatusPillClass(perf) {
+            const bucket = performanceStateBucket(perf?.status);
+            if (bucket === 'runnable') {
+                return 'model-status-great';
+            }
+            if (bucket === 'caution') {
+                return 'model-status-caution';
+            }
+            if (bucket === 'limited') {
+                return 'model-status-limited';
+            }
+            return '';
+        }
+
+        function scoreToPercent(score) {
+            const bounded = Math.max(1, Math.min(5, Number(score || 0)));
+            return Math.round(bounded * 20);
+        }
+
+        function rankingScore(modelId) {
+            const perf = modelPerformanceById[modelId] || {};
+            const quality = Number(perf.quality_score || 3);
+            const speed = Number(perf.performance_score || 2);
+            const status = performanceStateBucket(perf.status);
+
+            if (modelRankingPreference === 'speed') {
+                return speed * 100 + quality * 10;
+            }
+            if (modelRankingPreference === 'quality') {
+                return quality * 100 + speed * 10;
+            }
+
+            // balanced
+            const fitBonus = status === 'runnable' ? 25 : status === 'caution' ? 8 : 0;
+            return (quality * 60) + (speed * 60) + fitBonus;
+        }
+
+        function updateHardwareSummaryBanner() {
+            const summaryEl = document.getElementById('modelHardwareSummary');
+            if (!summaryEl) return;
+
+            if (modelHardwareProfile && modelHardwareProfile.summary) {
+                summaryEl.textContent = modelHardwareProfile.summary;
+                return;
+            }
+
+            summaryEl.textContent = 'Estimating model performance for this hardware...';
+        }
+
+        async function loadModelPerformance() {
+            try {
+                const response = await fetch(`${BACKEND_URL}/models/performance?device=${encodeURIComponent(selectedDevice || 'auto')}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const payload = await response.json();
+                if (!payload.success || typeof payload.models !== 'object') {
+                    throw new Error('Unexpected /models/performance response');
+                }
+
+                modelPerformanceById = payload.models || {};
+                modelHardwareProfile = payload.hardware || null;
+                updateHardwareSummaryBanner();
+                return payload;
+            } catch (error) {
+                console.warn('⚠️ Failed to load model performance:', error);
+                modelPerformanceById = {};
+                modelHardwareProfile = null;
+                updateHardwareSummaryBanner();
+                return null;
+            }
+        }
+
+        function updateActiveModelSummary() {
+            const label = document.getElementById('activeModelLibraryLabel');
+            const meta = document.getElementById('activeModelLibraryMeta');
+            if (!label || !meta) {
+                return;
+            }
+
+            const activeModelId = getModelIdFromValue(selectedModelValue);
+            const selectedModel = getModelByValue(selectedModelValue);
+            const spec = modelSpecsById[activeModelId] || {};
+            const catalog = getCatalogEntryByModelId(activeModelId) || {};
+
+            const title = catalog.title || spec.display_name || selectedModel?.name || activeModelId || 'Unknown model';
+            const family = catalog.family || spec.family || selectedModel?.family || 'unknown';
+            const runtime = catalog.runtime || spec.runtime || selectedModel?.runtime || 'unknown';
+
+            label.textContent = title;
+            meta.textContent = `${modelFamilyBadge(family)} · ${modelRuntimeBadge(runtime)}${activeModelId ? ` · ${activeModelId}` : ''}`;
+        }
+
+        function buildModelDropdownList() {
+            const merged = [];
+            const seenValues = new Set();
+
+            const appendOption = (option) => {
+                if (!option || !option.value || seenValues.has(option.value)) return;
+                seenValues.add(option.value);
+                merged.push(option);
+            };
+
+            const backendModelIds = Object.keys(modelSpecsById);
+            if (backendModelIds.length > 0) {
+                backendModelIds.forEach(modelId => {
+                    const spec = modelSpecsById[modelId];
+                    const catalogEntry = getCatalogEntryByModelId(modelId) || {};
+                    const aliases = Array.isArray(spec.aliases) ? spec.aliases : [];
+                    const value = catalogEntry.legacy_value || (aliases.length > 0 ? aliases[0] : spec.model_id);
+                    const title = catalogEntry.title || spec.display_name || value;
+                    const name = catalogEntry.quality_tier === 'recommended' ? `${title} (Recommended)` : title;
+
+                    appendOption({
+                        model_id: spec.model_id,
+                        value,
+                        name,
+                        family: catalogEntry.family || spec.family || 'unknown',
+                        runtime: catalogEntry.runtime || spec.runtime || 'unknown'
+                    });
+                });
+            } else if (modelCatalog.length > 0) {
+                modelCatalog.forEach(entry => {
+                    if (!entry.model_id || isCatalogPreview(entry)) return;
+                    const value = entry.legacy_value || entry.model_id;
+                    const title = entry.title || value;
+                    const name = entry.quality_tier === 'recommended' ? `${title} (Recommended)` : title;
+                    appendOption({
+                        model_id: entry.model_id,
+                        value,
+                        name,
+                        family: entry.family || 'unknown',
+                        runtime: entry.runtime || 'unknown'
+                    });
+                });
+            }
+
+            if (merged.length === 0) {
+                MODELS = [...FALLBACK_MODELS];
+            } else {
+                MODELS = merged;
+            }
+
+            rebuildModelLookupMaps();
+
+            const hasActive = MODELS.some(model => model.value === selectedModelValue);
+            if (!hasActive && MODELS.length > 0) {
+                const defaultModel = MODELS.find(model => model.model_id === 'whisper-small') || MODELS[0];
+                selectedModelValue = defaultModel.value;
+            }
+        }
+
+        function updateSelectedModelLabel() {
+            const model = getModelByValue(selectedModelValue);
+            const selectedModelEl = document.getElementById('selectedModel');
+            if (selectedModelEl) {
+                selectedModelEl.textContent = model ? model.name : selectedModelValue;
+            }
+            updateActiveModelSummary();
+        }
+
+        function setModelSelection(modelValue, persist = true, closeDropdown = true) {
+            const normalized = getModelValueFromModelId(modelValue);
+            selectedModelValue = normalized;
+            updateSelectedModelLabel();
+
+            document.querySelectorAll('#modelOptions .dropdown-option').forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.value === selectedModelValue) {
+                    opt.classList.add('selected');
+                }
+            });
+
+            if (closeDropdown) {
+                const header = document.querySelector('#modelDropdown .dropdown-header');
+                const content = document.getElementById('modelDropdownContent');
+                if (header) header.classList.remove('open');
+                if (content) content.classList.remove('show');
+            }
+
+            if (persist) {
+                saveSettings();
+                refreshModelLibrary(false);
+            }
+        }
 
         function initializeModelDropdown() {
             const optionsContainer = document.getElementById('modelOptions');
-            optionsContainer.innerHTML = '';
+            if (optionsContainer) {
+                optionsContainer.innerHTML = '';
 
-            MODELS.forEach(model => {
-                const option = document.createElement('div');
-                option.className = 'dropdown-option';
-                option.textContent = model.name;
-                option.dataset.value = model.value;
+                MODELS.forEach(model => {
+                    const option = document.createElement('div');
+                    option.className = 'dropdown-option';
+                    option.textContent = model.name;
+                    option.dataset.value = model.value;
 
-                if (model.value === selectedModelValue) {
-                    option.classList.add('selected');
-                }
+                    if (model.value === selectedModelValue) {
+                        option.classList.add('selected');
+                    }
 
-                option.onclick = () => selectModel(model.value, model.name);
-                optionsContainer.appendChild(option);
-            });
+                    option.onclick = () => selectModel(model.value, model.name);
+                    optionsContainer.appendChild(option);
+                });
+            }
+
+            updateSelectedModelLabel();
         }
 
         function toggleModelDropdown() {
             const header = document.querySelector('#modelDropdown .dropdown-header');
             const content = document.getElementById('modelDropdownContent');
-
-            header.classList.toggle('open');
-            content.classList.toggle('show');
+            if (header && content) {
+                header.classList.toggle('open');
+                content.classList.toggle('show');
+            }
         }
 
-        function selectModel(value, name) {
-            selectedModelValue = value;
-            document.getElementById('selectedModel').textContent = name;
+        function selectModel(value, _name) {
+            setModelSelection(value, true, true);
+        }
 
-            document.querySelectorAll('#modelOptions .dropdown-option').forEach(opt => {
-                opt.classList.remove('selected');
-                if (opt.dataset.value === value) {
-                    opt.classList.add('selected');
-                }
-            });
-
-            const header = document.querySelector('#modelDropdown .dropdown-header');
-            const content = document.getElementById('modelDropdownContent');
-            header.classList.remove('open');
-            content.classList.remove('show');
-
-            saveSettings();
+        async function initializeModelCatalog() {
+            modelCatalog = await loadBundledModelCatalog();
+            await loadBackendModels();
+            buildModelDropdownList();
+            initializeModelDropdown();
+            updateModelFilterButtons();
+            updateModelPerformanceFilterButtons();
+            updateModelRankingButtons();
+            updateHardwareSummaryBanner();
+            await refreshModelLibrary();
+            const sourceLabel = document.getElementById('modelCatalogSource');
+            if (sourceLabel) {
+                sourceLabel.textContent = modelCatalogSourceLabel;
+            }
         }
 
         // Sync model from Rust (called when other window changes it)
         window.syncModelFromRust = function(modelValue) {
             console.log('🔄 Syncing model from Rust:', modelValue);
-            const model = MODELS.find(m => m.value === modelValue);
-            if (model) {
-                selectedModelValue = modelValue;
-                document.getElementById('selectedModel').textContent = model.name;
-
-                // Update selected state in dropdown
-                document.querySelectorAll('#modelOptions .dropdown-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                    if (opt.dataset.value === modelValue) {
-                        opt.classList.add('selected');
-                    }
-                });
-            }
+            setModelSelection(modelValue, false, false);
+            refreshModelLibrary();
         };
+
+        function formatBytes(bytes) {
+            if (!bytes || bytes <= 0) return '0 B';
+            const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+            let value = bytes;
+            let unitIndex = 0;
+            while (value >= 1024 && unitIndex < units.length - 1) {
+                value /= 1024;
+                unitIndex++;
+            }
+            return `${value.toFixed(value >= 10 || unitIndex === 0 ? 0 : 1)} ${units[unitIndex]}`;
+        }
+
+        function modelRuntimeBadge(runtime) {
+            const normalized = String(runtime || '').toLowerCase();
+            if (!normalized) return 'unknown';
+            if (normalized === 'faster_whisper') return 'faster-whisper';
+            if (normalized === 'parakeet_transformers') return 'transformers';
+            if (normalized.includes('nemo')) return 'NeMo';
+            return runtime;
+        }
+
+        function modelFamilyBadge(family) {
+            if (!family) return 'unknown';
+            return family.charAt(0).toUpperCase() + family.slice(1);
+        }
+
+        async function fetchModelStatus(modelId) {
+            const response = await fetch(`${BACKEND_URL}/model/status?model_id=${encodeURIComponent(modelId)}`);
+            if (!response.ok) {
+                throw new Error(`status ${response.status}`);
+            }
+            return response.json();
+        }
+
+        function fallbackPerformanceEstimate({ modelId, runtime = '', isPreviewOnly = false }) {
+            if (isPreviewOnly) {
+                return {
+                    model_id: modelId,
+                    quality_score: 5,
+                    performance_score: 1,
+                    estimated_realtime_factor: 0.0,
+                    likely_performant_percent: 0,
+                    status: 'unsupported',
+                    status_label: 'Not yet supported',
+                    status_reason: 'Preview model is not available in this backend yet.',
+                    effective_device: 'cpu'
+                };
+            }
+
+            const runtimeLower = String(runtime || '').toLowerCase();
+            const isLarge = modelId.includes('large') || modelId.includes('1.1b');
+            const isMedium = modelId.includes('medium') || modelId.includes('0.6b');
+            const quality = isLarge ? 5 : isMedium ? 4 : modelId.includes('small') ? 3 : modelId.includes('base') ? 2 : 1;
+            const perf = isLarge ? 2 : isMedium ? 3 : 4;
+
+            return {
+                model_id: modelId,
+                quality_score: quality,
+                performance_score: perf,
+                estimated_realtime_factor: Number((perf / 2).toFixed(2)),
+                likely_performant_percent: perf >= 4 ? 80 : perf === 3 ? 65 : 45,
+                status: perf >= 4 ? 'runnable' : perf === 3 ? 'caution' : 'too_slow',
+                status_label: perf >= 4 ? 'Likely runnable' : perf === 3 ? 'Usable with caution' : 'Likely too slow',
+                status_reason: runtimeLower === 'faster_whisper'
+                    ? 'Estimate based on model size and current device selection.'
+                    : 'Estimate available once backend performance probing is complete.',
+                effective_device: selectedDevice || 'auto'
+            };
+        }
+
+        function renderModelLibrary() {
+            const grid = document.getElementById('modelLibraryGrid');
+            if (!grid) return;
+
+            const catalogById = {};
+            modelCatalog.forEach(item => {
+                if (item.model_id) catalogById[item.model_id] = item;
+            });
+
+            const orderedModelIds = [];
+            const seenModelIds = new Set();
+            modelCatalog.forEach(item => {
+                if (!item?.model_id || seenModelIds.has(item.model_id)) return;
+                seenModelIds.add(item.model_id);
+                orderedModelIds.push(item.model_id);
+            });
+            Object.keys(modelSpecsById).forEach(modelId => {
+                if (seenModelIds.has(modelId)) return;
+                seenModelIds.add(modelId);
+                orderedModelIds.push(modelId);
+            });
+
+            if (orderedModelIds.length === 0) {
+                grid.innerHTML = `<div class="model-empty-state">No models available from backend or bundled catalog.</div>`;
+                updateActiveModelSummary();
+                return;
+            }
+
+            const backendListAvailable = Object.keys(modelSpecsById).length > 0;
+            const familyFilteredIds = orderedModelIds.filter(modelId => {
+                const spec = modelSpecsById[modelId] || {};
+                const cat = catalogById[modelId] || {};
+                const vendorGroup = modelVendorGroup(cat, spec);
+                return modelFamilyFilter === 'all' || vendorGroup === modelFamilyFilter;
+            });
+
+            const rankedIds = [...familyFilteredIds].sort((leftId, rightId) => {
+                return rankingScore(rightId) - rankingScore(leftId);
+            });
+
+            const preferredModelId = rankedIds.find(modelId => {
+                const spec = modelSpecsById[modelId] || {};
+                const cat = catalogById[modelId] || {};
+                const isPreviewOnly = isCatalogPreview(cat) || (backendListAvailable && !modelSpecsById[modelId]);
+                const perf = modelPerformanceById[modelId] || fallbackPerformanceEstimate({
+                    modelId,
+                    runtime: cat.runtime || spec.runtime || 'unknown',
+                    isPreviewOnly
+                });
+                return performanceStateBucket(perf.status) === 'runnable';
+            });
+
+            const cards = [];
+            rankedIds.forEach(modelId => {
+                const spec = modelSpecsById[modelId] || {};
+                const cat = catalogById[modelId] || {};
+
+                const isBackendSupported = !!modelSpecsById[modelId] || (!backendListAvailable && !isCatalogPreview(cat));
+                const status = isBackendSupported ? (modelStatusById[modelId] || {}) : {};
+                const downloadStatus = status.download_status || {};
+                const filesTotal = downloadStatus.files_total || 0;
+                const filesCompleted = downloadStatus.files_completed || 0;
+                const filesFailed = downloadStatus.files_failed || 0;
+                const bytesTotal = downloadStatus.bytes_total || 0;
+                const bytesDownloaded = downloadStatus.bytes_downloaded || 0;
+                const progress = bytesTotal > 0 ? Math.min(100, Math.round((bytesDownloaded / bytesTotal) * 100)) : 0;
+                const isDownloading = isBackendSupported && downloadStatus.state === 'running';
+                const isActive = getModelIdFromValue(selectedModelValue) === modelId;
+                const isDownloaded = isBackendSupported && !!status.is_downloaded;
+                const downloadedPath = isDownloaded ? String(status.downloaded_path || '').trim() : '';
+                const isPreviewOnly = isCatalogPreview(cat) || (backendListAvailable && !modelSpecsById[modelId]);
+                const perf = modelPerformanceById[modelId] || fallbackPerformanceEstimate({
+                    modelId,
+                    runtime: cat.runtime || spec.runtime || status.runtime || 'unknown',
+                    isPreviewOnly
+                });
+                if (!matchesPerformanceFilter(perf)) {
+                    return;
+                }
+                const runtime = cat.runtime || spec.runtime || status.runtime || 'unknown';
+                const family = cat.family || spec.family || 'unknown';
+                const vendorGroup = modelVendorGroup(cat, spec);
+                const repoUrl = modelRepoUrl(cat, spec);
+                const logo = cat.logo
+                    || (vendorGroup === 'nvidia' ? 'assets/logos/nvidia.svg' : '')
+                    || (family === 'parakeet' ? 'assets/logos/parakeet.svg' : 'assets/logos/whisper.svg');
+                const title = cat.title || spec.display_name || modelId;
+                const description = cat.description || `${modelFamilyBadge(family)} model`;
+                const languagesRaw = cat.languages || spec.languages || 'unknown';
+                const languages = Array.isArray(languagesRaw) ? languagesRaw.join(', ') : String(languagesRaw);
+                const statusNote = cat.status_note || 'Coming soon';
+                const performanceLabel = perf.status_label || 'Estimate unavailable';
+                const performanceReason = perf.status_reason || '';
+                const performanceRealtime = Number(perf.estimated_realtime_factor || 0);
+                const performancePercent = Number(perf.likely_performant_percent || 0);
+                const qualityPercent = scoreToPercent(perf.quality_score || 3);
+                const speedPercent = scoreToPercent(perf.performance_score || 2);
+                const performanceMeta = performancePercent > 0
+                    ? `${performancePercent}% likely performant · ~${performanceRealtime.toFixed(1)}x realtime`
+                    : performanceReason;
+                const performanceDetail = performancePercent > 0 ? performanceReason : '';
+                const statusPillClass = modelStatusPillClass(perf);
+                const rankingLabel = modelRankingPreference === 'quality'
+                    ? 'quality'
+                    : modelRankingPreference === 'speed'
+                        ? 'speed'
+                        : 'balanced';
+                const recommendedBadge = preferredModelId === modelId
+                    ? `<span class="model-pill" style="border-color:#667eea;color:#667eea;">Recommended (${rankingLabel})</span>`
+                    : '';
+
+                const statusText = isPreviewOnly
+                    ? statusNote
+                    : isDownloading
+                    ? `Downloading ${filesCompleted}/${filesTotal} files (${progress}%)`
+                    : isDownloaded
+                        ? 'Downloaded'
+                        : 'Not downloaded';
+                const disableUse = !isBackendSupported || perf.status === 'too_large';
+
+                cards.push(`
+                    <div class="model-tile">
+                        <div class="model-tile-top">
+                            <img class="model-logo" src="${logo}" alt="${title} logo">
+                            <div class="model-meta">
+                                <div class="model-name">${title}</div>
+                                <div class="model-subline">${modelId}</div>
+                            </div>
+                            ${isActive ? '<span class="model-pill" style="border-color:#667eea;color:#667eea;">Active</span>' : ''}
+                        </div>
+                        ${repoUrl ? `<div class="model-repo-caption"><a href="${repoUrl}" target="_blank" rel="noreferrer">${repoUrl}</a></div>` : ''}
+                        <div>
+                            ${isPreviewOnly ? '<span class="model-pill model-coming-soon">Coming soon</span>' : ''}
+                            ${recommendedBadge}
+                            <span class="model-pill ${statusPillClass}">${performanceLabel}</span>
+                            <span class="model-pill">${modelFamilyBadge(family)}</span>
+                            <span class="model-pill">${modelRuntimeBadge(runtime)}</span>
+                            <span class="model-pill">${languages}</span>
+                        </div>
+                        <div class="model-subline" style="margin-top: 2px;">${description}</div>
+                        <div class="model-scores">
+                            <div class="model-score-row">
+                                <span class="model-score-label">Quality (${Math.max(1, Math.min(5, Number(perf.quality_score || 3)))}/5)</span>
+                                <div class="model-score-track">
+                                    <div class="model-score-fill quality" style="width:${qualityPercent}%"></div>
+                                </div>
+                            </div>
+                            <div class="model-score-row">
+                                <span class="model-score-label">Performance (${Math.max(1, Math.min(5, Number(perf.performance_score || 2)))}/5)</span>
+                                <div class="model-score-track">
+                                    <div class="model-score-fill performance" style="width:${speedPercent}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="model-subline">${performanceMeta || ''}</div>
+                        <div class="model-subline">${performanceDetail || ''}</div>
+                        <div class="model-status-line">${statusText}${filesFailed > 0 ? `, ${filesFailed} failed` : ''}</div>
+                        ${downloadedPath ? `<div class="model-path">Path: <code>${downloadedPath}</code></div>` : ''}
+                        <div class="model-progress ${isDownloading ? 'show' : ''}">
+                            <div style="width:${progress}%"></div>
+                        </div>
+                        <div class="model-subline" style="margin-bottom: 10px;">
+                            ${isPreviewOnly ? '' : (bytesTotal > 0 ? `${formatBytes(bytesDownloaded)} / ${formatBytes(bytesTotal)}` : '')}
+                        </div>
+                        <div class="model-actions">
+                            <button class="btn btn-primary" onclick="activateModel('${modelId}')" ${disableUse ? 'disabled' : ''}>Use</button>
+                            ${isDownloaded ? '' : `<button class="btn" onclick="downloadModel('${modelId}')" ${isBackendSupported && !isDownloading ? '' : 'disabled'}>Download</button>`}
+                            ${isDownloading ? `<button class="btn" onclick="cancelModelDownload('${modelId}')" ${isBackendSupported ? '' : 'disabled'}>Cancel</button>` : ''}
+                            ${isDownloaded ? `<button class="btn btn-danger" onclick="deleteModel('${modelId}')" ${isBackendSupported ? '' : 'disabled'}>Delete</button>` : ''}
+                        </div>
+                    </div>
+                `);
+            });
+
+            if (cards.length === 0) {
+                const familyLabel = modelFamilyFilter === 'all'
+                    ? 'All'
+                    : modelFamilyFilter === 'nvidia' ? 'NVIDIA' : 'Whisper';
+                const performanceLabel = modelPerformanceFilter === 'all'
+                    ? 'all fit levels'
+                    : modelPerformanceFilter;
+                const filterLabel = `No ${familyLabel} models match filter: ${performanceLabel}.`;
+                grid.innerHTML = `<div class="model-empty-state">${filterLabel}</div>`;
+            } else {
+                grid.innerHTML = cards.join('');
+            }
+
+            updateActiveModelSummary();
+        }
+
+        function startModelDownloadPolling() {
+            if (modelDownloadPoller) return;
+            modelDownloadPoller = setInterval(async () => {
+                const hasRunning = Object.values(modelStatusById).some(item => {
+                    const state = item?.download_status?.state;
+                    return state === 'running';
+                });
+                if (!hasRunning) {
+                    clearInterval(modelDownloadPoller);
+                    modelDownloadPoller = null;
+                    return;
+                }
+                await refreshModelLibrary(false);
+            }, 2000);
+        }
+
+        async function refreshModelLibrary(showAlertOnFailure = false) {
+            if (modelLibraryRefreshing) return;
+            modelLibraryRefreshing = true;
+
+            try {
+                await loadBackendModels();
+                await loadModelPerformance();
+
+                const statusById = {};
+                const ids = Object.keys(modelSpecsById);
+                for (const modelId of ids) {
+                    try {
+                        statusById[modelId] = await fetchModelStatus(modelId);
+                    } catch (error) {
+                        statusById[modelId] = { success: false, error: String(error), model_id: modelId };
+                    }
+                }
+                modelStatusById = statusById;
+                buildModelDropdownList();
+                initializeModelDropdown();
+                renderModelLibrary();
+
+                const sourceLabel = document.getElementById('modelCatalogSource');
+                if (sourceLabel) {
+                    sourceLabel.textContent = modelCatalogSourceLabel;
+                }
+
+                const running = Object.values(modelStatusById).some(item => {
+                    const state = item?.download_status?.state;
+                    return state === 'running';
+                });
+                if (running) {
+                    startModelDownloadPolling();
+                }
+            } catch (error) {
+                console.error('❌ Failed to refresh model library:', error);
+                if (showAlertOnFailure) {
+                    alert('Failed to refresh model library');
+                }
+            } finally {
+                modelLibraryRefreshing = false;
+            }
+        }
+
+        async function activateModel(modelId) {
+            if (!modelSpecsById[modelId]) {
+                alert(`${modelId} is listed in the catalog but is not supported by this backend yet.`);
+                return;
+            }
+            const value = getModelValueFromModelId(modelId);
+            setModelSelection(value, true, true);
+            await refreshModelLibrary(false);
+        }
+
+        async function downloadModel(modelId) {
+            if (!modelSpecsById[modelId]) {
+                alert(`${modelId} download is not available in this backend yet.`);
+                return;
+            }
+            try {
+                const response = await fetch(`${BACKEND_URL}/models/download`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        model_id: modelId,
+                        include_large_files: true,
+                        background: true
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                await refreshModelLibrary(false);
+                startModelDownloadPolling();
+            } catch (error) {
+                console.error('❌ Download request failed:', error);
+                alert(`Failed to start download for ${modelId}`);
+            }
+        }
+
+        async function cancelModelDownload(modelId) {
+            if (!modelSpecsById[modelId]) {
+                return;
+            }
+            try {
+                const response = await fetch(`${BACKEND_URL}/models/download/${encodeURIComponent(modelId)}/cancel`, {
+                    method: 'POST'
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                await refreshModelLibrary(false);
+            } catch (error) {
+                console.error('❌ Cancel download failed:', error);
+                alert(`Failed to cancel download for ${modelId}`);
+            }
+        }
+
+        async function deleteModel(modelId) {
+            if (!modelSpecsById[modelId]) {
+                alert(`${modelId} is a catalog preview and has no local artifacts to delete.`);
+                return;
+            }
+            const approved = window.confirm(`Delete local artifacts for ${modelId}?`);
+            if (!approved) return;
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/models/${encodeURIComponent(modelId)}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const valueForDeletedModel = getModelValueFromModelId(modelId);
+                if (selectedModelValue === valueForDeletedModel) {
+                    // Keep active selection; backend will re-download/load on next use.
+                    await saveSettings();
+                }
+                await refreshModelLibrary(false);
+            } catch (error) {
+                console.error('❌ Delete model failed:', error);
+                alert(`Failed to delete ${modelId}`);
+            }
+        }
 
         // Theme dropdown data
         const THEMES = [
@@ -1796,12 +3150,72 @@
         }
 
         // GPU Setup Functions
+        function formatGpuDownloadLabel(data) {
+            const estimatedMb = Number(data?.estimated_download_size_mb || 0);
+            if (!Number.isFinite(estimatedMb) || estimatedMb <= 0) {
+                return 'Download Missing CUDA Libraries';
+            }
+            return `Download Missing CUDA Libraries (~${estimatedMb}MB)`;
+        }
+
+        function updateGPUSetupCopy(data = {}) {
+            const vendor = String(data.gpu_vendor || 'unknown').toLowerCase();
+            const gpuInstallActionBtn = document.getElementById('gpuInstallActionBtn');
+            const gpuSetupTitle = document.getElementById('gpuSetupTitle');
+            const gpuSetupMessage = document.getElementById('gpuSetupMessage');
+            const gpuDownloadActionBtn = document.getElementById('gpuDownloadActionBtn');
+
+            if (gpuDownloadActionBtn) {
+                gpuDownloadActionBtn.textContent = formatGpuDownloadLabel(data);
+            }
+
+            if (vendor === 'amd' || vendor === 'intel') {
+                if (gpuInstallActionBtn) {
+                    gpuInstallActionBtn.style.display = 'none';
+                }
+                if (gpuSetupTitle) {
+                    gpuSetupTitle.textContent = `${vendor.toUpperCase()} GPU Detected`;
+                }
+                if (gpuSetupMessage) {
+                    gpuSetupMessage.textContent = 'No CUDA download is needed. Select DirectML in Processing Device.';
+                }
+                return;
+            }
+
+            if (vendor === 'nvidia') {
+                if (gpuInstallActionBtn) {
+                    gpuInstallActionBtn.style.display = '';
+                    gpuInstallActionBtn.textContent = 'Install Missing NVIDIA CUDA Libraries...';
+                }
+                if (gpuSetupTitle) {
+                    gpuSetupTitle.textContent = '🚀 NVIDIA GPU Detected!';
+                }
+                if (gpuSetupMessage) {
+                    gpuSetupMessage.textContent = 'Download missing NVIDIA CUDA libraries (on-demand) for faster transcription on CUDA?';
+                }
+                return;
+            }
+
+            if (gpuInstallActionBtn) {
+                gpuInstallActionBtn.style.display = '';
+                gpuInstallActionBtn.textContent = 'Install Missing NVIDIA CUDA Libraries...';
+            }
+            if (gpuSetupTitle) {
+                gpuSetupTitle.textContent = 'GPU Setup';
+            }
+            if (gpuSetupMessage) {
+                gpuSetupMessage.textContent = 'CUDA libraries are only needed for NVIDIA GPUs.';
+            }
+        }
+
         async function checkGPUSetup(autoShow = true) {
             try {
                 const response = await fetch(`${BACKEND_URL}/gpu/info`);
                 const data = await response.json();
+                const vendor = String(data.gpu_vendor || 'unknown').toLowerCase();
 
                 console.log('🔍 GPU Info:', data);
+                updateGPUSetupCopy(data);
 
                 if (data.success && data.gpu_available && !data.libs_installed) {
                     // Libraries are missing - always clear dismissed flag and show modal
@@ -1814,7 +3228,11 @@
                     }
                     return { needsSetup: true, data };
                 } else if (!data.gpu_available) {
-                    console.log('ℹ️ No NVIDIA GPU detected');
+                    if (vendor === 'amd' || vendor === 'intel') {
+                        console.log(`ℹ️ ${vendor.toUpperCase()} GPU detected - use DirectML (no CUDA download needed)`);
+                    } else {
+                        console.log('ℹ️ No NVIDIA GPU detected');
+                    }
                     return { needsSetup: false, data };
                 } else if (data.libs_installed) {
                     console.log('✅ GPU libraries already installed');
@@ -1822,6 +3240,7 @@
                     localStorage.removeItem('gpuSetupDismissed');
                     return { needsSetup: false, data };
                 }
+                return { needsSetup: false, data };
             } catch (error) {
                 console.error('❌ Error checking GPU setup:', error);
                 return { needsSetup: false, error };
@@ -1854,11 +3273,17 @@
                 showGPUSetupModal();
             } else {
                 try {
-                    const response = await fetch(`${BACKEND_URL}/gpu/info`);
-                    const data = await response.json();
+                    const data = result?.data || {};
+                    const vendor = String(data.gpu_vendor || 'unknown').toLowerCase();
 
-                    if (!data.gpu_available) {
-                        alert('No NVIDIA GPU detected on this system.');
+                    if (!data.success) {
+                        alert('Backend connection failed. Make sure the app is running.');
+                    } else if (!data.gpu_available) {
+                        if (vendor === 'amd' || vendor === 'intel') {
+                            alert(`${vendor.toUpperCase()} GPU detected.\n\nNo CUDA download is needed. Select DirectML in Processing Device.`);
+                        } else {
+                            alert('No NVIDIA GPU detected on this system.');
+                        }
                     } else if (data.libs_installed) {
                         alert('GPU libraries are already installed!');
                     } else {
@@ -1903,14 +3328,14 @@
 
                 if (data.success) {
                     progressBar.style.width = '100%';
-                    progressText.textContent = '✅ GPU libraries installed successfully!';
+                    progressText.textContent = '✅ NVIDIA CUDA libraries installed successfully!';
 
                     // Store that setup is complete
                     localStorage.setItem('gpuSetupDismissed', 'true');
 
                     setTimeout(() => {
                         modal.classList.add('hidden');
-                        alert('✅ GPU libraries installed successfully!\n\n⚠️ IMPORTANT: You must close and restart the app for GPU acceleration to work.\n\nClose the app now and reopen it.');
+                        alert('✅ NVIDIA CUDA libraries installed successfully!\n\n⚠️ IMPORTANT: You must close and restart the app for GPU acceleration to work.\n\nClose the app now and reopen it.');
                     }, 2000);
                 } else {
                     progressBar.style.width = '0%';
@@ -1973,9 +3398,10 @@
 
             // Initialize all dropdowns
             initializeLanguageDropdown();
-            initializeModelDropdown();
             initializeThemeDropdown();
             initializeMicrophoneDropdown();
+            await initializeModelCatalog();
+            updateWavTranscribeUiState();
 
             // Wait for backend and check if GPU setup is needed
             setTimeout(waitForBackendAndCheckGPU, 500);
@@ -2079,24 +3505,23 @@
                 console.log('📥 Loaded model from state:', model, 'device:', device);
 
                 // Update UI to match
-                const modelObj = MODELS.find(m => m.value === model);
-                if (modelObj) {
-                    selectedModelValue = model;
-                    document.getElementById('selectedModel').textContent = modelObj.name;
-                    initializeModelDropdown(); // Refresh to show selected
-                }
+                setModelSelection(model, false, false);
 
                 // Update device selection
                 selectedDevice = device;
                 const buttons = {
                     'auto': document.getElementById('deviceAuto'),
                     'cuda': document.getElementById('deviceGPU'),
+                    'directml': document.getElementById('deviceDML'),
                     'cpu': document.getElementById('deviceCPU')
                 };
-                Object.values(buttons).forEach(btn => btn.classList.remove('active'));
+                Object.values(buttons).forEach(btn => {
+                    if (btn) btn.classList.remove('active');
+                });
                 if (buttons[device]) {
                     buttons[device].classList.add('active');
                 }
+                await refreshModelLibrary(false);
             } catch (error) {
                 console.error('❌ Error loading model/device from state:', error);
             }

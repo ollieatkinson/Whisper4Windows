@@ -7,7 +7,7 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 import urllib.request
 import zipfile
 import shutil
@@ -26,6 +26,7 @@ CUDA_PACKAGES = {
     "nvidia-cuda-runtime-cu12": "https://pypi.org/pypi/nvidia-cuda-runtime-cu12/json",
     "nvidia-cuda-nvrtc-cu12": "https://pypi.org/pypi/nvidia-cuda-nvrtc-cu12/json",
 }
+CUDA_ESTIMATED_TOTAL_SIZE_BYTES = 700 * 1024 * 1024
 
 
 def get_gpu_libs_dir() -> Path:
@@ -42,23 +43,69 @@ def get_gpu_libs_dir() -> Path:
     return gpu_dir
 
 
-def is_gpu_available() -> bool:
-    """Check if GPU (CUDA) is available on this system"""
+def get_video_controller_names() -> List[str]:
+    """Return detected video controller names from Windows.
+
+    Tries legacy `wmic` first, then falls back to PowerShell CIM (Win11-safe).
+    """
     try:
-        # Don't import ctranslate2 here - it triggers CUDA loading
-        # Instead, check if NVIDIA GPU exists via Windows
         import subprocess
+
+        # 1) Legacy WMIC path (may be absent on newer Windows installs)
+        try:
+            result = subprocess.run(
+                ["wmic", "path", "win32_VideoController", "get", "name"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+            )
+            lines = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+            names = [line for line in lines if line.lower() != "name"]
+            if names:
+                return names
+        except Exception:
+            pass
+
+        # 2) PowerShell CIM fallback
+        ps_cmd = (
+            "Get-CimInstance Win32_VideoController | "
+            "Select-Object -ExpandProperty Name"
+        )
         result = subprocess.run(
-            ['wmic', 'path', 'win32_VideoController', 'get', 'name'],
+            ["powershell", "-NoProfile", "-Command", ps_cmd],
             capture_output=True,
             text=True,
-            timeout=5
+            timeout=8,
+            creationflags=subprocess.CREATE_NO_WINDOW if hasattr(subprocess, "CREATE_NO_WINDOW") else 0,
         )
-        output = result.stdout.lower()
-        return 'nvidia' in output or 'geforce' in output or 'quadro' in output
+        lines = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+        if lines:
+            return lines
+
+        logger.debug("Video controller detection returned no names from WMIC and CIM")
+        return []
     except Exception as e:
-        logger.debug(f"GPU check failed: {e}")
-        return False
+        logger.debug(f"Video controller detection failed: {e}")
+        return []
+
+
+def detect_gpu_vendor(gpu_names: Optional[List[str]] = None) -> str:
+    """Classify primary GPU vendor for setup guidance."""
+    names = gpu_names if gpu_names is not None else get_video_controller_names()
+    normalized = " ".join(name.lower() for name in names)
+
+    if any(token in normalized for token in ("nvidia", "geforce", "quadro", "tesla", "rtx")):
+        return "nvidia"
+    if any(token in normalized for token in ("amd", "radeon", "ati")):
+        return "amd"
+    if "intel" in normalized:
+        return "intel"
+    return "unknown"
+
+
+def is_gpu_available() -> bool:
+    """Check if NVIDIA CUDA GPU path is available on this system."""
+    return detect_gpu_vendor() == "nvidia"
 
 
 def check_library_status() -> Dict[str, any]:
@@ -141,10 +188,14 @@ def are_gpu_libs_installed() -> bool:
     return True
 
 
-def get_download_size() -> int:
-    """Get estimated download size in bytes (approximate)"""
-    # Approximate sizes for CUDA libraries (8 packages total)
-    return 700 * 1024 * 1024  # ~700MB
+def get_download_size(packages_to_install: Optional[List[str]] = None) -> int:
+    """Get estimated download size in bytes for missing CUDA packages."""
+    if not packages_to_install:
+        return 0
+
+    total_packages = max(len(CUDA_PACKAGES), 1)
+    package_count = len(packages_to_install)
+    return int((package_count / total_packages) * CUDA_ESTIMATED_TOTAL_SIZE_BYTES)
 
 
 def install_gpu_libs(progress_callback=None) -> bool:
@@ -158,6 +209,14 @@ def install_gpu_libs(progress_callback=None) -> bool:
         True if successful, False otherwise
     """
     try:
+        gpu_vendor = detect_gpu_vendor()
+        if gpu_vendor != "nvidia":
+            logger.info(
+                "Skipping CUDA library install: detected GPU vendor '%s' (DirectML should be used instead).",
+                gpu_vendor,
+            )
+            return False
+
         logger.info("📦 Checking which GPU libraries need to be installed...")
         gpu_dir = get_gpu_libs_dir()
 
@@ -359,18 +418,25 @@ def uninstall_gpu_libs() -> bool:
 
 def get_gpu_info() -> Dict:
     """Get information about GPU and library status"""
-    gpu_available = is_gpu_available()
+    gpu_names = get_video_controller_names()
+    gpu_vendor = detect_gpu_vendor(gpu_names)
+    gpu_available = gpu_vendor == "nvidia"
     library_status = check_library_status() if gpu_available else {}
-    all_installed = are_gpu_libs_installed() if gpu_available else False
+    all_installed = bool(library_status) and all(info.get("installed", False) for info in library_status.values())
 
     # Get list of missing libraries
     missing_libraries = [name for name, info in library_status.items() if not info.get("installed", False)]
+    estimated_download_size_mb = get_download_size(missing_libraries) // (1024 * 1024)
 
     return {
+        "gpu_vendor": gpu_vendor,
+        "gpu_names": gpu_names,
         "gpu_available": gpu_available,
         "libs_installed": all_installed,
         "library_status": library_status,
         "missing_libraries": missing_libraries,
         "libs_dir": str(get_gpu_libs_dir()),
-        "estimated_download_size_mb": get_download_size() // (1024 * 1024)
+        "estimated_download_size_mb": estimated_download_size_mb,
+        "cuda_download_required": gpu_available,
+        "directml_recommended": gpu_vendor in ("amd", "intel"),
     }

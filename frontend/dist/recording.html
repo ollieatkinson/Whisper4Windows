@@ -173,6 +173,8 @@
                     <option value="medium">Medium</option>
                     <option value="large-v3">Large V3</option>
                     <option value="large-v3-turbo">Large V3 Turbo</option>
+                    <option value="parakeet-ctc-0.6b">Parakeet CTC 0.6B</option>
+                    <option value="parakeet-ctc-1.1b">Parakeet CTC 1.1B</option>
                 </select>
             </div>
             <div class="status-text" id="statusText">Recording...</div>
@@ -215,6 +217,122 @@
             soundVolume = savedVolume ? parseInt(savedVolume) / 100 : 0.8;
         } catch (e) {
             console.warn('Could not load sound settings:', e);
+        }
+
+        const FALLBACK_MODELS = [
+            { model_id: 'whisper-tiny', value: 'tiny', name: 'Tiny' },
+            { model_id: 'whisper-base', value: 'base', name: 'Base' },
+            { model_id: 'whisper-small', value: 'small', name: 'Small' },
+            { model_id: 'whisper-medium', value: 'medium', name: 'Medium' },
+            { model_id: 'whisper-large-v3', value: 'large-v3', name: 'Large V3' },
+            { model_id: 'whisper-large-v3-turbo', value: 'large-v3-turbo', name: 'Large V3 Turbo' },
+            { model_id: 'parakeet-ctc-0.6b', value: 'parakeet-ctc-0.6b', name: 'Parakeet CTC 0.6B' },
+            { model_id: 'parakeet-ctc-1.1b', value: 'parakeet-ctc-1.1b', name: 'Parakeet CTC 1.1B' }
+        ];
+        let modelValueToId = {};
+        let modelIdToValue = {};
+
+        function rebuildModelMaps(models) {
+            modelValueToId = {};
+            modelIdToValue = {};
+            models.forEach(model => {
+                modelValueToId[model.value] = model.model_id;
+                modelIdToValue[model.model_id] = model.value;
+            });
+        }
+
+        function normalizeModelValue(modelValueOrId) {
+            return modelIdToValue[modelValueOrId] || modelValueOrId;
+        }
+
+        function renderModelSelectOptions(models) {
+            const select = document.getElementById('modelSelect');
+            if (!select) return;
+
+            const currentValue = normalizeModelValue(select.value);
+            select.innerHTML = '';
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.value;
+                option.textContent = model.name;
+                select.appendChild(option);
+            });
+
+            rebuildModelMaps(models);
+
+            if (models.some(model => model.value === currentValue)) {
+                select.value = currentValue;
+            } else if (models.length > 0) {
+                select.value = models[0].value;
+            }
+        }
+
+        async function initializeModelSelectOptions() {
+            let catalogModels = [];
+            let backendModels = [];
+
+            try {
+                const response = await fetch('assets/model-catalog.json');
+                if (response.ok) {
+                    const payload = await response.json();
+                    if (payload && Array.isArray(payload.models)) {
+                        catalogModels = payload.models;
+                    }
+                }
+            } catch (error) {
+                console.warn('⚠️ Failed to load bundled model catalog in recording window:', error);
+            }
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/models`);
+                if (response.ok) {
+                    const payload = await response.json();
+                    if (payload && payload.success && Array.isArray(payload.models)) {
+                        backendModels = payload.models;
+                    }
+                }
+            } catch (error) {
+                console.warn('⚠️ Failed to load backend models in recording window:', error);
+            }
+
+            const backendById = {};
+            backendModels.forEach(spec => {
+                if (spec && spec.model_id) {
+                    backendById[spec.model_id] = spec;
+                }
+            });
+
+            const merged = [];
+            const seenValues = new Set();
+            const appendOption = (entry) => {
+                if (!entry || !entry.value || seenValues.has(entry.value)) return;
+                seenValues.add(entry.value);
+                merged.push(entry);
+            };
+
+            catalogModels.forEach(entry => {
+                const spec = backendById[entry.model_id] || {};
+                const value = entry.legacy_value || entry.model_id;
+                const title = entry.title || spec.display_name || value;
+                appendOption({
+                    model_id: entry.model_id,
+                    value,
+                    name: title
+                });
+            });
+
+            backendModels.forEach(spec => {
+                const aliases = Array.isArray(spec.aliases) ? spec.aliases : [];
+                const value = aliases.length > 0 ? aliases[0] : spec.model_id;
+                appendOption({
+                    model_id: spec.model_id,
+                    value,
+                    name: spec.display_name || spec.model_id
+                });
+            });
+
+            const finalModels = merged.length > 0 ? merged : FALLBACK_MODELS;
+            renderModelSelectOptions(finalModels);
         }
 
         function playBeep(frequency, duration) {
@@ -622,7 +740,14 @@
             console.log('🔄 Syncing model from Rust:', modelValue);
             const select = document.getElementById('modelSelect');
             if (select) {
-                select.value = modelValue;
+                const normalized = normalizeModelValue(modelValue);
+                if (![...select.options].some(option => option.value === normalized)) {
+                    const option = document.createElement('option');
+                    option.value = normalized;
+                    option.textContent = normalized;
+                    select.appendChild(option);
+                }
+                select.value = normalized;
             }
         };
 
@@ -658,7 +783,14 @@
 
                 const select = document.getElementById('modelSelect');
                 if (select) {
-                    select.value = model;
+                    const normalized = normalizeModelValue(model);
+                    if (![...select.options].some(option => option.value === normalized)) {
+                        const option = document.createElement('option');
+                        option.value = normalized;
+                        option.textContent = normalized;
+                        select.appendChild(option);
+                    }
+                    select.value = normalized;
                 }
             } catch (error) {
                 console.error('❌ Error loading model from state:', error);
@@ -710,9 +842,10 @@
             // Send to backend via Tauri command
             const { invoke } = window.__TAURI_INTERNALS__;
             try {
+                const [, selectedDevice] = await invoke('get_model_and_device');
                 await invoke('set_model_and_device', {
                     model: model,
-                    device: 'auto'
+                    device: selectedDevice || 'auto'
                 });
                 console.log('✅ Model updated');
             } catch (error) {
@@ -805,22 +938,25 @@
         };
 
         // Initialize on load
-        initVisualizer();
-        loadModelFromState(); // Load the current model setting
+        (async () => {
+            initVisualizer();
+            await initializeModelSelectOptions();
+            await loadModelFromState();
 
-        // Use setTimeout to ensure DOM is fully ready before loading shortcuts
-        setTimeout(() => {
-            loadShortcutsFromState(); // Load the current shortcuts
-            loadSoundSettingsFromState(); // Load sound settings
-        }, 100);
+            // Use setTimeout to ensure DOM is fully ready before loading shortcuts
+            setTimeout(() => {
+                loadShortcutsFromState(); // Load the current shortcuts
+                loadSoundSettingsFromState(); // Load sound settings
+            }, 100);
 
-        console.log('✅ Recording window loaded');
-        console.log('✅ Visualizer initialized with', bars.length, 'bars');
-        console.log('🎨 TEMPORARY: Using hardcoded audio visualizer');
-        console.log('🔧 Debug commands available:');
-        console.log('   testHardcodedVisualizer() - Test the hardcoded visualizer');
-        console.log('   debugBackendAudio() - Test backend audio endpoint');
-        console.log('   debugWebRTCAudio() - Test WebRTC audio fallback');
+            console.log('✅ Recording window loaded');
+            console.log('✅ Visualizer initialized with', bars.length, 'bars');
+            console.log('🎨 TEMPORARY: Using hardcoded audio visualizer');
+            console.log('🔧 Debug commands available:');
+            console.log('   testHardcodedVisualizer() - Test the hardcoded visualizer');
+            console.log('   debugBackendAudio() - Test backend audio endpoint');
+            console.log('   debugWebRTCAudio() - Test WebRTC audio fallback');
+        })();
 
         // Track previous visibility state
         let wasVisible = false;

@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "track_id": "ralph-wiggum",
+  "default_model_id": "whisper-small",
+  "models": [
+    {
+      "model_id": "whisper-tiny",
+      "aliases": ["tiny"],
+      "display_name": "Whisper Tiny",
+      "family": "whisper",
+      "runtime": "faster_whisper",
+      "backend_model_name": "tiny",
+      "supported_devices": ["auto", "cpu", "cuda"],
+      "supports_translate": true,
+      "languages": "multilingual",
+      "artifact_layout": "faster_whisper_hf_cache",
+      "download": {
+        "source": "faster_whisper"
+      }
+    },
+    {
+      "model_id": "whisper-base",
+      "aliases": ["base"],
+      "display_name": "Whisper Base",
+      "family": "whisper",
+      "runtime": "faster_whisper",
+      "backend_model_name": "base",
+      "supported_devices": ["auto", "cpu", "cuda"],
+      "supports_translate": true,
+      "languages": "multilingual",
+      "artifact_layout": "faster_whisper_hf_cache",
+      "download": {
+        "source": "faster_whisper"
+      }
+    },
+    {
+      "model_id": "whisper-small",
+      "aliases": ["small"],
+      "display_name": "Whisper Small",
+      "family": "whisper",
+      "runtime": "faster_whisper",
+      "backend_model_name": "small",
+      "supported_devices": ["auto", "cpu", "cuda"],
+      "supports_translate": true,
+      "languages": "multilingual",
+      "artifact_layout": "faster_whisper_hf_cache",
+      "download": {
+        "source": "faster_whisper"
+      }
+    },
+    {
+      "model_id": "whisper-medium",
+      "aliases": ["medium"],
+      "display_name": "Whisper Medium",
+      "family": "whisper",
+      "runtime": "faster_whisper",
+      "backend_model_name": "medium",
+      "supported_devices": ["auto", "cpu", "cuda"],
+      "supports_translate": true,
+      "languages": "multilingual",
+      "artifact_layout": "faster_whisper_hf_cache",
+      "download": {
+        "source": "faster_whisper"
+      }
+    },
+    {
+      "model_id": "whisper-large-v3",
+      "aliases": ["large-v3"],
+      "display_name": "Whisper Large v3",
+      "family": "whisper",
+      "runtime": "faster_whisper",
+      "backend_model_name": "large-v3",
+      "supported_devices": ["auto", "cpu", "cuda"],
+      "supports_translate": true,
+      "languages": "multilingual",
+      "artifact_layout": "faster_whisper_hf_cache",
+      "download": {
+        "source": "faster_whisper"
+      }
+    },
+    {
+      "model_id": "whisper-large-v3-turbo",
+      "aliases": ["large-v3-turbo"],
+      "display_name": "Whisper Large v3 Turbo",
+      "family": "whisper",
+      "runtime": "faster_whisper",
+      "backend_model_name": "large-v3-turbo",
+      "supported_devices": ["auto", "cpu", "cuda"],
+      "supports_translate": true,
+      "languages": "multilingual",
+      "artifact_layout": "faster_whisper_hf_cache",
+      "download": {
+        "source": "faster_whisper"
+      }
+    },
+    {
+      "model_id": "parakeet-ctc-0.6b",
+      "aliases": ["parakeet-ctc-0.6b"],
+      "display_name": "Parakeet CTC 0.6B",
+      "family": "parakeet",
+      "runtime": "parakeet_transformers",
+      "backend_model_name": "parakeet-ctc-0.6b",
+      "supported_devices": ["auto", "cpu", "cuda", "directml"],
+      "supports_translate": false,
+      "languages": ["en"],
+      "artifact_layout": "hf_transformers_ctc_v1",
+      "download": {
+        "source": "huggingface",
+        "repo_id": "nvidia/parakeet-ctc-0.6b",
+        "revision": "ad09ba1cc62743fbc9814de5d2016fca9096485a",
+        "files": [
+          {
+            "path": "config.json",
+            "size": 962,
+            "sha256": "5949e3fa6c27692c60a73ffd374fbaa076dd5cd96128c03830757b97b14d097d",
+            "required": true
+          },
+          {
+            "path": "preprocessor_config.json",
+            "size": 314,
+            "sha256": "7f26808482a58d8dd187c4b87364810292b91ed7721e099bdbb05ca50da37a98",
+            "required": true
+          },
+          {
+            "path": "tokenizer.json",
+            "size": 412363,
+            "sha256": "f3f1dd45c3889ed2b5bf67180caf05f51d7d7e4948c20e5f24d8c24df9cc47aa",
+            "required": true
+          },
+          {
+            "path": "tokenizer_config.json",
+            "size": 634,
+            "sha256": "47bf2c494c913e35cad22b0fc1474721219b643a45a5f61c1456646f94699037",
+            "required": true
+          },
+          {
+            "path": "special_tokens_map.json",
+            "size": 279,
+            "sha256": "af8c98917af6cb493513e5f1f8a35efdc28fa82cac15b2bb5f065d64f8bc904d",
+            "required": true
+          },
+          {
+            "path": "model.safetensors",
+            "size": 2435506188,
+            "sha256": "8ed62289d977b8d16a5f80a13aa48ee332b2fc7c2f30668fe52f63513d23b93c",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "model_id": "parakeet-ctc-1.1b",
+      "aliases": ["parakeet-ctc-1.1b"],
+      "display_name": "Parakeet CTC 1.1B",
+      "family": "parakeet",
+      "runtime": "parakeet_transformers",
+      "backend_model_name": "parakeet-ctc-1.1b",
+      "supported_devices": ["auto", "cpu", "cuda", "directml"],
+      "supports_translate": false,
+      "languages": ["en"],
+      "artifact_layout": "hf_transformers_ctc_v1",
+      "download": {
+        "source": "huggingface",
+        "repo_id": "nvidia/parakeet-ctc-1.1b",
+        "revision": "a707e818195cb97c8f7da2fc36b221a29f69a5db",
+        "files": [
+          {
+            "path": "config.json",
+            "size": 962,
+            "sha256": "c33a8ddbf447d68d31b2f1d1e4efa061548813b7647913e67560a9b198f06ae1",
+            "required": true
+          },
+          {
+            "path": "preprocessor_config.json",
+            "size": 314,
+            "sha256": "7f26808482a58d8dd187c4b87364810292b91ed7721e099bdbb05ca50da37a98",
+            "required": true
+          },
+          {
+            "path": "tokenizer.json",
+            "size": 412363,
+            "sha256": "f3f1dd45c3889ed2b5bf67180caf05f51d7d7e4948c20e5f24d8c24df9cc47aa",
+            "required": true
+          },
+          {
+            "path": "tokenizer_config.json",
+            "size": 634,
+            "sha256": "47bf2c494c913e35cad22b0fc1474721219b643a45a5f61c1456646f94699037",
+            "required": true
+          },
+          {
+            "path": "special_tokens_map.json",
+            "size": 279,
+            "sha256": "af8c98917af6cb493513e5f1f8a35efdc28fa82cac15b2bb5f065d64f8bc904d",
+            "required": true
+          },
+          {
+            "path": "vocab.json",
+            "size": 16509,
+            "sha256": "4d2cda042d92cd2e819e9a03d81b67e6635ab118b207de1f2f80a6349b88185c",
+            "required": false
+          },
+          {
+            "path": "model.safetensors",
+            "size": 4250698604,
+            "sha256": "cf81753371dfdb8fbb6e9145ef8cef9562cdd77ef204ef466273bcc14a471f1a",
+            "required": true
+          }
+        ]
+      }
+    }
+  ]
+}

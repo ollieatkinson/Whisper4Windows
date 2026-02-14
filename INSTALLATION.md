@@ -56,11 +56,12 @@ The bundled installer includes:
 
 ### Step 1: Install Python Dependencies
 
-The backend Python environment is already set up, but verify:
+Create and verify the backend Python 3.12 environment:
 
 ```powershell
 cd backend
-.\venv\Scripts\Activate.ps1
+py -3.12 -m venv .venv312
+.\.venv312\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
@@ -174,7 +175,7 @@ These are already installed via pip in the venv:
 
 ```powershell
 cd backend
-.\venv\Scripts\Activate.ps1
+.\.venv312\Scripts\Activate.ps1
 pip install nvidia-cublas-cu12 nvidia-cudnn-cu12
 ```
 
@@ -268,7 +269,7 @@ Left-click the system tray icon to open settings:
 
 ```powershell
 cd backend
-.\venv\Scripts\Activate.ps1
+.\.venv312\Scripts\Activate.ps1
 pip install -r requirements.txt
 python main.py
 ```
@@ -277,7 +278,7 @@ python main.py
 
 ```powershell
 cd backend
-.\venv\Scripts\Activate.ps1
+.\.venv312\Scripts\Activate.ps1
 pip install --upgrade -r requirements.txt
 ```
 
@@ -378,7 +379,7 @@ To update the app:
 ```powershell
 # Update Python dependencies
 cd backend
-.\venv\Scripts\Activate.ps1
+.\.venv312\Scripts\Activate.ps1
 pip install --upgrade -r requirements.txt
 
 # Rebuild frontend (if code changed)
@@ -396,3 +397,4 @@ cargo-tauri build --no-bundle
 - **faster-whisper:** https://github.com/guillaumekln/faster-whisper
 
 ---
+

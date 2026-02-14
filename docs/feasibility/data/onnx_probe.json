@@ -1,0 +1,51 @@
+{
+  "cuda_provider_detected": false,
+  "directml_provider_detected": false,
+  "inference_probe_error": "",
+  "inference_probe_ok": true,
+  "machine": "x86_64",
+  "numpy_installed": true,
+  "numpy_version": "2.4.2",
+  "onnx_installed": true,
+  "onnx_version": "1.20.1",
+  "onnxruntime_installed": true,
+  "onnxruntime_version": "1.24.1",
+  "platform": "Linux",
+  "provider_tests": [
+    {
+      "available": false,
+      "error": "",
+      "ok": false,
+      "requested_provider": "CUDAExecutionProvider",
+      "selected_provider": ""
+    },
+    {
+      "available": false,
+      "error": "",
+      "ok": false,
+      "requested_provider": "DmlExecutionProvider",
+      "selected_provider": ""
+    },
+    {
+      "available": false,
+      "error": "",
+      "ok": false,
+      "requested_provider": "DirectMLExecutionProvider",
+      "selected_provider": ""
+    },
+    {
+      "available": true,
+      "error": "",
+      "ok": true,
+      "requested_provider": "CPUExecutionProvider",
+      "selected_provider": "CPUExecutionProvider"
+    }
+  ],
+  "providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "python": "3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]",
+  "release": "6.6.87.2-microsoft-standard-WSL2",
+  "timestamp_utc": "2026-02-13T19:46:17.593607+00:00"
+}

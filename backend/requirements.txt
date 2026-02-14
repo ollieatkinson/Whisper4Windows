@@ -1,6 +1,6 @@
 # Whisper4Windows Backend Dependencies
 # Phase 1: Basic FastAPI server
-# Compatible with Python 3.13
+# Compatible with Python 3.12
 
 # Web framework
 fastapi>=0.115.0
@@ -8,7 +8,7 @@ uvicorn[standard]>=0.32.0
 python-multipart>=0.0.6
 websockets>=13.0
 
-# Data validation (Python 3.13 compatible)
+# Data validation (Python 3.12 compatible)
 pydantic>=2.10.0
 pydantic-settings>=2.7.0
 
@@ -17,13 +17,19 @@ python-dotenv>=1.0.0
 
 # Audio processing (Phase 2)
 sounddevice>=0.4.6
-numpy>=1.26.0
+numpy>=1.26.0,<2.4.0
 scipy>=1.12.0
+soundfile>=0.13.1
 pyaudio>=0.2.14  # Alternative for Windows WASAPI
 
 # Speech-to-Text (Phase 3)
 faster-whisper>=1.0.0
-# onnxruntime-directml==1.17.0  # Alternative backend
+onnxruntime>=1.20.0
+onnxruntime-directml>=1.20.0; platform_system == "Windows"
+# Keep transformers on v4 and torch pinned for torch-directml compatibility.
+transformers>=4.57.0,<5.0.0
+torch==2.4.1
+librosa>=0.11.0
 
 # Voice Activity Detection
 # webrtcvad==2.0.10

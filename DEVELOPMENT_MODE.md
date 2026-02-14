@@ -11,9 +11,14 @@ Tauri provides excellent hot reload development capabilities, similar to Canva's
 ### **Method 1: Pure Tauri Dev Mode (Recommended)**
 
 ```bash
+# First-time setup (Python 3.12 backend env)
+cd Whisper4Windows/backend
+py -3.12 -m venv .venv312
+.\.venv312\Scripts\python.exe -m pip install -r requirements.txt
+
 # Terminal 1: Start Backend (Python)
 cd Whisper4Windows/backend
-venv\Scripts\activate
+.venv312\Scripts\activate
 python main.py
 
 # Terminal 2: Start Frontend with Hot Reload
@@ -56,7 +61,7 @@ cargo tauri dev
 ```bash
 # Start backend once
 cd backend
-venv\Scripts\activate
+.venv312\Scripts\activate
 python main.py
 
 # Keep this running throughout development
@@ -91,7 +96,7 @@ Now that you have hot reload set up, you can easily test and iterate on the visu
 1. **Start Development Mode**:
    ```bash
    # Terminal 1
-   cd backend && venv\Scripts\activate && python main.py
+   cd backend && .venv312\Scripts\activate && python main.py
    
    # Terminal 2  
    cd frontend/src-tauri && cargo tauri dev
@@ -196,4 +201,6 @@ cargo tauri dev # Try again
 5. **Iterate quickly**: Perfect your hardcoded visualizer
 
 Happy developing! 🚀
+
+
 

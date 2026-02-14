@@ -164,9 +164,9 @@ A: Absolutely! Perfect for emails, documentation, meeting notes, and more. Since
 
 ```bash
 cd backend
-venv\Scripts\activate
-pip install -r requirements.txt
-python main.py
+py -3.12 -m venv .venv312
+.\.venv312\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv312\Scripts\python.exe main.py
 ```
 
 **GPU not working?**

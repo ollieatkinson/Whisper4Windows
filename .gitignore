@@ -1,5 +1,7 @@
 # Python
 backend/venv/
+backend/.venv-dev/
+backend/.venv312/
 backend/__pycache__/
 backend/*.pyc
 backend/*.pyo
@@ -13,13 +15,13 @@ backend/dist/
 backend/build/
 backend/*.spec
 
-# Whisper models (large files) - exclude ALL models
-# Users will download them automatically on first run (~500MB for small model)
-backend/models/
+# Legacy local model cache (older versions used backend/models for downloaded weights)
+backend/model_cache/
 
 # Recorded audio files
 backend/*.wav
 backend/recordings/
+backend/spikes/artifacts/
 
 
 # Rust/Tauri
